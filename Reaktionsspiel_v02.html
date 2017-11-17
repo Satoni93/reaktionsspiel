@@ -6,7 +6,15 @@
 
     <style media="screen">
 
-      #shape{
+    h1{
+        font-size: 15pt;
+    }
+
+    h2{
+      font-size: 10pt;
+    }
+
+      #images{
         position: absolute;
       }
 
@@ -14,18 +22,19 @@
   </head>
 
     <body>
-      <div id="shape">
+      <div id="images">
       </div>
 
-      <p>Klicke so schnell wie du kannst auf die Figuren unten! :) <div id="time"></div></p>
+      <h1>Klicke so schnell wie du kannst auf die leckeren Cookies unten! :) </h1>
+      <h2><div id="time"></div></h2>
 
       <script type="text/javascript">
 
-      // var images =["bilder/bild1.png", "bilder/bild1.png"];
-      // figure.style.background = "url("+images[getRandomInt(0, images.length-1)]+"]";
+      var figure = document.getElementById("images");
 
+      var images =["Bilder/Cookie_1.png", "Bilder/Cookie_2.png","Bilder/Cookie_3.png", "Bilder/Cookie_4.png",
+      "Bilder/Cookie_5.png", "Bilder/Cookie_6.png", "Bilder/Cookie_7.png"];
 
-      var figure = document.getElementById("shape");
       var start = new Date().getTime();
 
       function getRandomInt (min, max) {
@@ -43,19 +52,18 @@
           var randG = Math.floor(Math.random() * 255) + 1;
           var randB = Math.floor(Math.random() * 255) + 1;
 
-          var borderRadius = getRandomInt(0,1)*50;
-
           figure.style.height = size+"px";
           figure.style.width = size+"px";
 
           figure.style.top = top+"px";
           figure.style.left = left+"px";
 
-          figure.style.background = "rgb(" + randR + ", " + randG + ", " + randB + ")";
-
-          figure.style.borderRadius = borderRadius+"%";
+          figure.style.background = "url("+images[getRandomInt(0, images.length-1)]+")";
+          figure.style.backgroundSize = "contain";
+          figure.style.backgroundRepeat = "no-repeat";
 
           figure.style.display = "block";
+
 
           start = new Date().getTime();
       }
@@ -66,7 +74,7 @@
         var end = new Date().getTime();
         var dauer = (end-start)/1000;
 
-        document.getElementById("time").innerHTML = "Deine super Reaktionszeit beträgt: " +dauer;
+        document.getElementById("time").innerHTML = "Deine super-duper Reaktionszeit beträgt: "+dauer;
         figure.style.display = "none";
 
         setTimeout(showFigure, Math.random() * 2000);
