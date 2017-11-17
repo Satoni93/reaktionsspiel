@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reaktionsspiel</title>
+
+    <style media="screen">
+
+      #shape{
+        position: absolute;
+      }
+
+    </style>
+  </head>
+
+
+  <body>
+    <div id="shape">
+    </div>
+
+    <p>Klicke auf die Figuren unten.
+        Deine Reaktionszeit: <div id="time"></div></p>
+
+    <script type="text/javascript">
+
+    var figure = document.getElementById("shape");
+    var start = new Date().getTime();
+
+    function getRandomInt (min, max) {
+        var randomInt = Math.floor(Math.random()*(max-min+1)) + min;
+        return randomInt;
+    }
+
+    function showFigure() {
+        var size = getRandomInt(50,300);
+
+        var top = getRandomInt(100, window.innerHeight-size);
+        var left = getRandomInt(0, window.innerWidth-size);
+
+        var randR = Math.floor(Math.random() * 255) + 1;
+        var randG = Math.floor(Math.random() * 255) + 1;
+        var randB = Math.floor(Math.random() * 255) + 1;
+
+        var borderRadius = getRandomInt(0,1)*50;
+
+        figure.style.height = size+"px";
+        figure.style.width = size+"px";
+
+        figure.style.top = top+"px";
+        figure.style.left = left+"px";
+
+        figure.style.background = "rgb(" + randR + ", " + randG + ", " + randB + ")";
+
+        figure.style.borderRadius = borderRadius+"%";
+
+        start = new Date().getTime();
+    }
+
+    setTimeout(showFigure, Math.random() * 2000);
+
+    figure.onclick = function () {
+      var end = new Date().getTime();
+      var dauer = (end-start)/1000;
+
+      document.getElementById("time").innerHTML = "Deine Zeit " +dauer;
+
+      setTimeout(showFigure, Math.random() * 2000);
+    }
+
+    </script>
+
+
+  </body>
+</html>
+
+
+
+<!-- Die Grö0e als Zufallszahl produziert (wie randomInteger "funktion")
+
+function getRandomInt (min, max) {
+    var randomInt = Math.floor(Math.random()+(max-min+1)) + min;
+    return randomInt;
+}
+
+var size = getRandomInt (100, 300);
+var figure = document.getElementById("figure");
+figure.style.width = size;
+figure.style.heigh = size;
+
+Positionierung durch Zufallszahlen
+Element bekommt ein Klick-Event
+Eine Zufallszahl produziert, die den Borderradius setzt
+Eine zufällige Farbe gebaut durch eine Funktion (Internet)
+Eine Funktion, die die Figuren zusammensetzt (Position, Radius, Farbe)
+Figuren angezeigt (generatedFigure)
+Dann startet irgendeine Zeit (Startzeit beim klicken), dann wird die Zeit gespeichert und angezeigt
+Man kann ein delay einbauen, indem man ein set-timeout benutzt
+
+
+Funktionen
+Keine Schleifen
+Keine Arreys
+Keine FL-s
+Variablen
+Onklick, style verändern, Zufallszahlen-->
