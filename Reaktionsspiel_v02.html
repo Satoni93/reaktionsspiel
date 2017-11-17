@@ -13,62 +13,67 @@
     </style>
   </head>
 
+    <body>
+      <div id="shape">
+      </div>
 
-  <body>
-    <div id="shape">
-    </div>
+      <p>Klicke so schnell wie du kannst auf die Figuren unten! :) <div id="time"></div></p>
 
-    <p>Klicke auf die Figuren unten.
-        Deine Reaktionszeit: <div id="time"></div></p>
+      <script type="text/javascript">
 
-    <script type="text/javascript">
+      // var images =["bilder/bild1.png", "bilder/bild1.png"];
+      // figure.style.background = "url("+images[getRandomInt(0, images.length-1)]+"]";
 
-    var figure = document.getElementById("shape");
-    var start = new Date().getTime();
 
-    function getRandomInt (min, max) {
-        var randomInt = Math.floor(Math.random()*(max-min+1)) + min;
-        return randomInt;
-    }
+      var figure = document.getElementById("shape");
+      var start = new Date().getTime();
 
-    function showFigure() {
-        var size = getRandomInt(50,300);
+      function getRandomInt (min, max) {
+          var randomInt = Math.floor(Math.random()*(max-min+1)) + min;
+          return randomInt;
+      }
 
-        var top = getRandomInt(100, window.innerHeight-size);
-        var left = getRandomInt(0, window.innerWidth-size);
+      function showFigure() {
+          var size = getRandomInt(50,300);
 
-        var randR = Math.floor(Math.random() * 255) + 1;
-        var randG = Math.floor(Math.random() * 255) + 1;
-        var randB = Math.floor(Math.random() * 255) + 1;
+          var top = getRandomInt(100, window.innerHeight-size);
+          var left = getRandomInt(0, window.innerWidth-size);
 
-        var borderRadius = getRandomInt(0,1)*50;
+          var randR = Math.floor(Math.random() * 255) + 1;
+          var randG = Math.floor(Math.random() * 255) + 1;
+          var randB = Math.floor(Math.random() * 255) + 1;
 
-        figure.style.height = size+"px";
-        figure.style.width = size+"px";
+          var borderRadius = getRandomInt(0,1)*50;
 
-        figure.style.top = top+"px";
-        figure.style.left = left+"px";
+          figure.style.height = size+"px";
+          figure.style.width = size+"px";
 
-        figure.style.background = "rgb(" + randR + ", " + randG + ", " + randB + ")";
+          figure.style.top = top+"px";
+          figure.style.left = left+"px";
 
-        figure.style.borderRadius = borderRadius+"%";
+          figure.style.background = "rgb(" + randR + ", " + randG + ", " + randB + ")";
 
-        start = new Date().getTime();
-    }
+          figure.style.borderRadius = borderRadius+"%";
 
-    setTimeout(showFigure, Math.random() * 2000);
+          figure.style.display = "block";
 
-    figure.onclick = function () {
-      var end = new Date().getTime();
-      var dauer = (end-start)/1000;
-
-      document.getElementById("time").innerHTML = "Deine Zeit " +dauer;
+          start = new Date().getTime();
+      }
 
       setTimeout(showFigure, Math.random() * 2000);
-    }
 
-    </script>
+      figure.onclick = function () {
+        var end = new Date().getTime();
+        var dauer = (end-start)/1000;
+
+        document.getElementById("time").innerHTML = "Deine super Reaktionszeit beträgt: " +dauer;
+        figure.style.display = "none";
+
+        setTimeout(showFigure, Math.random() * 2000);
+      }
+
+      </script>
 
 
-  </body>
-</html>
+    </body>
+  </html>
