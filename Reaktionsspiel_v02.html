@@ -18,10 +18,13 @@
     <div id="shape">
     </div>
 
-    <p>Klicke so schnell wie du kannst auf die Figuren unten! :)
-        Deine Reaktionszeit: <div id="time"></div></p>
+    <p>Klicke so schnell wie du kannst auf die Figuren unten! :) <div id="time"></div></p>
 
     <script type="text/javascript">
+
+    // var images =["bilder/bild1.png", "bilder/bild1.png"];
+    // images [getRandomInt(0, images.length-1],
+
 
     var figure = document.getElementById("shape");
     var start = new Date().getTime();
@@ -53,6 +56,8 @@
 
         figure.style.borderRadius = borderRadius+"%";
 
+        figure.style.display = "block";
+
         start = new Date().getTime();
     }
 
@@ -62,7 +67,8 @@
       var end = new Date().getTime();
       var dauer = (end-start)/1000;
 
-      document.getElementById("time").innerHTML = "Deine Zeit " +dauer;
+      document.getElementById("time").innerHTML = "Deine super Reaktionszeit beträgt: " +dauer;
+      figure.style.display = "none";
 
       setTimeout(showFigure, Math.random() * 2000);
     }
